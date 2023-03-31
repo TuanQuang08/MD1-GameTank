@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 <img id="myImage" src="tank.png" height="100px" width="100px">
@@ -58,13 +63,19 @@
   }
 
   function checkCollision() {
-    let topBoom = parseInt(boom.style.top) - 100 + 'px';
-    let rightBoom = 400;
-    let bottomBoom = 300;
-    let bottomTank = parseInt(image.style.top) + 200 + 'px';
-    let rightTank = parseInt(image.style.left) + 200 + 'px';
-      console.log(boom.style.left);
-    console.log(boom.style.right);
+    let topBoom = parseInt(boom.style.top);
+    let leftBoom = parseInt(boom.style.left);
+    let rightBoom = window.innerWidth - leftBoom + 100;
+    let bottomBoom = window.innerHeight - topBoom + 100;
+
+      console.log(topBoom,leftBoom,rightBoom,bottomBoom);
+
+    let topTank = parseInt(image.style.top);
+    let leftTank = parseInt(image.style.left);
+    let bottomTank = topTank + 100;
+    let rightTank = leftTank + 100;
+    console.log(topTank,leftTank,bottomTank,rightTank);
+
     if(parseInt(image.style.top) === bottomBoom || parseInt(image.style.left) === rightBoom || parseInt(boom.style.top) === parseInt(bottomTank) || parseInt(boom.style.left) === parseInt(rightTank) ){
         image.src = 'explosion.png';
         boom.src = 'explosion.png';
